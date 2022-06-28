@@ -17,4 +17,5 @@
     <string name="key_equal">=</string>
     <string name="result">i\'ll see the result here</string>
     <string name="title">Calculator</string>
+    <string name="key_dot">.</string>
 </resources>
