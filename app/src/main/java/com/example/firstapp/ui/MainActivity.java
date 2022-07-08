@@ -1,26 +1,24 @@
 package com.example.firstapp.ui;
 
-import androidx.annotation.NonNull;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.CheckBox;
-import android.widget.RadioButton;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.firstapp.R;
 import com.example.firstapp.model.Calculator;
 import com.example.firstapp.model.Operator;
+import com.example.firstapp.model.Theme;
+import com.example.firstapp.model.ThemeRepository;
+import com.example.firstapp.model.ThemeRepositoryImpl;
 import com.example.firstapp.presenter.CalculatorPresenter;
-import com.example.firstapp.ui.CalculatorView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,57 +26,45 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity implements CalculatorView {
     private TextView resultTxt;
     private CalculatorPresenter presenter;
-    private RadioButton checkBox_dark;
-    private RadioButton checkBox_light;
-    SharedPreferences preferences;
+    private ThemeRepository themeRepository;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        preferences = getSharedPreferences("themes.xml", Context.MODE_PRIVATE);
+        themeRepository= ThemeRepositoryImpl.getINSTANCE(this);
 
-        int theme = preferences.getInt("theme", R.style.AppTheme);
-
-        setTheme(theme);
+        setTheme(themeRepository.getSavedTheme().getThemeRes());
 
         setContentView(R.layout.activity_main);
         presenter = new CalculatorPresenter(this, new Calculator());
 
         resultTxt = findViewById(R.id.result);
+        final ActivityResultLauncher<Intent> themeLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if(result.getResultCode()== Activity.RESULT_OK){
+                    Intent intent = result.getData();
 
-        checkBox_dark = findViewById(R.id.night_theme);
-        checkBox_light =findViewById(R.id.light_theme);
-
-        if (checkBox_dark != null) {
-            checkBox_dark.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    preferences.edit()
-                            .putInt("theme", R.style.NightAppTheme)
-                            .commit();
-                    checkBox_light=null;
-
+                    Theme selectedTheme = (Theme) intent.getSerializableExtra(SelectThemeActivity.THEME_SELECTED);
+                    themeRepository.saveTheme(selectedTheme);
                     recreate();
                 }
-            });
-        }
 
-        if (checkBox_light != null) {
-            checkBox_light.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    preferences.edit()
-                            .putInt("theme", R.style.AppTheme)
-                            .commit();
-                    recreate();
-                    checkBox_dark=null;
+            }
+        });
 
-                }
-            });
-        }
+       findViewById(R.id.theme).setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(MainActivity.this, SelectThemeActivity.class);
+               intent.putExtra(SelectThemeActivity.THEME_SELECTED, themeRepository.getSavedTheme());
+               themeLauncher.launch(intent);
+           }
+       });
+
         presenter = new CalculatorPresenter(this, new Calculator());
 
         final Map<Integer, Integer> numbers = new HashMap<>();
@@ -133,7 +119,6 @@ public class MainActivity extends AppCompatActivity implements CalculatorView {
                 presenter.onDotPressed();
             }
         });
-
 
     }
 

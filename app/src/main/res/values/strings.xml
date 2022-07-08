@@ -19,5 +19,6 @@
     <string name="title">Calculator</string>
     <string name="key_dot">.</string>
     <string name="dark_theme">dark theme</string>
-    <string name="light_theme">lidht theme</string>
+    <string name="light_theme">light theme</string>
+    <string name="select_theme">select theme</string>
 </resources>
