@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/formula"
+    android:backgroundTint="#887272"
     android:columnCount="4"
     android:padding="20dp">
 
@@ -17,20 +18,14 @@
         android:layout_gravity="fill_horizontal"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
-        android:background="#8FDCD6D6"
-        android:fontFamily="casual"
         android:gravity="end"
-        android:hint="@string/result"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:hint="@string/result" />
 
     <Button
-
         android:id="@+id/key_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:fontFamily="casual"
         android:text="@string/key_1" />
 
     <Button
@@ -38,7 +33,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:fontFamily="casual"
         android:text="@string/key_2" />
 
     <Button
@@ -47,7 +41,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:fontFamily="casual"
         android:text="@string/key_3" />
 
     <Button
@@ -55,7 +48,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:fontFamily="casual"
         android:text="@string/key_multiply" />
 
     <Button
@@ -63,7 +55,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:fontFamily="casual"
         android:text="@string/key_4" />
 
     <Button
@@ -71,7 +62,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:fontFamily="casual"
         android:text="@string/key_5" />
 
     <Button
@@ -79,7 +69,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:fontFamily="casual"
         android:text="@string/key_6" />
 
     <Button
@@ -87,7 +76,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:fontFamily="casual"
         android:text="@string/key_divide" />
 
     <Button
@@ -95,7 +83,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:fontFamily="casual"
         android:text="@string/key_7" />
 
     <Button
@@ -103,7 +90,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:fontFamily="casual"
         android:text="@string/key_8" />
 
     <Button
@@ -111,8 +97,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:fontFamily="casual"
-        android:scrollbarSize="8dp"
         android:text="@string/key_9" />
 
     <Button
@@ -120,7 +104,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:fontFamily="casual"
         android:text="@string/key_plus" />
 
     <Button
@@ -130,7 +113,6 @@
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
         android:layout_gravity="fill_horizontal"
-        android:fontFamily="casual"
         android:text="@string/key_0" />
 
     <Button
@@ -138,7 +120,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:fontFamily="casual"
         android:text="@string/key_dot" />
 
     <Button
@@ -146,8 +127,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:fontFamily="casual"
         android:text="@string/key_minus" />
 
+    <RadioButton
+        android:id="@+id/night_theme"
+        android:layout_columnWeight="1"
+        android:layout_gravity="center_horizontal" />
 
+    <CheckedTextView
+        android:layout_columnWeight="1"
+        android:text="@string/dark_theme"/>
+    <RadioButton
+        android:id="@+id/light_theme"
+        android:layout_columnWeight="1"
+        android:layout_gravity="center_horizontal" />
+
+    <CheckedTextView
+        android:layout_columnWeight="1"
+        android:text="@string/light_theme"/>
 </GridLayout>

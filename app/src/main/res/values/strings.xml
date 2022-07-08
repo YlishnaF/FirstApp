@@ -15,7 +15,9 @@
     <string name="key_plus">+</string>
     <string name="key_minus">-</string>
     <string name="key_equal">=</string>
-    <string name="result">i\'ll see the result here</string>
+    <string name="result">result</string>
     <string name="title">Calculator</string>
     <string name="key_dot">.</string>
+    <string name="dark_theme">dark theme</string>
+    <string name="light_theme">lidht theme</string>
 </resources>
