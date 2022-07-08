@@ -129,20 +129,14 @@
         android:layout_columnWeight="1"
         android:text="@string/key_minus" />
 
-    <RadioButton
-        android:id="@+id/night_theme"
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="4"
         android:layout_columnWeight="1"
-        android:layout_gravity="center_horizontal" />
+        android:text="@string/select_theme"/>
 
-    <CheckedTextView
-        android:layout_columnWeight="1"
-        android:text="@string/dark_theme"/>
-    <RadioButton
-        android:id="@+id/light_theme"
-        android:layout_columnWeight="1"
-        android:layout_gravity="center_horizontal" />
 
-    <CheckedTextView
-        android:layout_columnWeight="1"
-        android:text="@string/light_theme"/>
 </GridLayout>
